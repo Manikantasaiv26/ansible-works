@@ -1,0 +1,19 @@
+---
+- hosts: local
+  tasks:
+    - name: run echo Command
+      command: /bin/echo Hello Sample PlayBook
+
+    - name: get the IP address
+      shell: hostname
+      register: host_name
+
+    - mail:
+        host: smtp.gmail.com
+        port: 587
+        username: vishnumolakalamani@gmail.com
+        password: manikanta19@
+        to: importantmail82@gmail.com
+        subject: Ansible-report
+        body: 'System {{ ansible_hostname }} has been successfully provisioned.'
+      delegate_to: localhost
