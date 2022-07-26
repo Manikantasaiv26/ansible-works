@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   sudo: yes
+   tasks:
+    - name: Check Up Time
+      action: chkuptime
+      register: uptime
+
+    - debug: var=uptime
